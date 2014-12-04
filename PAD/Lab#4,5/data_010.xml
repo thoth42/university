@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<employees>
+  <employee>
+    <firstname>Virrion</firstname>
+    <lastname>Roronoa</lastname>
+    <salary>523</salary>
+    <department>Design</department>
+  </employee>
+
+  <employee>
+    <firstname>Sanji</firstname>
+    <lastname>BlackLeg</lastname>
+    <salary>458</salary>
+    <department>Marketing</department>
+  </employee>
+
+  <employee>
+    <firstname>Nami</firstname>
+    <lastname>Chuan</lastname>
+    <salary>633</salary>
+    <department>Marketing</department>
+  </employee>
+
+  <employee>
+    <firstname>Zoro</firstname>
+    <lastname>Marimo</lastname>
+    <salary>255</salary>
+    <department>Sales</department>
+  </employee>
+
+  <employee>
+    <firstname>Chopper</firstname>
+    <lastname>Reendeer</lastname>
+    <salary>500</salary>
+    <department>Design</department>
+  </employee>
+
+  <employee>
+    <firstname>Narud</firstname>
+    <lastname>Bigboy</lastname>
+    <salary>250</salary>
+    <department>Design</department>
+  </employee>
+
+  <employee>
+    <firstname>Keltuzad</firstname>
+    <lastname>Ice</lastname>
+    <salary>600</salary>
+    <department>Marketing</department>
+  </employee>
+
+  <employee>
+    <firstname>HellScream</firstname>
+    <lastname>Orkish</lastname>
+    <salary>1500</salary>
+    <department>Testing</department>
+  </employee>
+
+  <employee>
+    <firstname>Vaio</firstname>
+    <lastname>TheNoteBook</lastname>
+    <salary>500</salary>
+    <department>Development</department>
+  </employee>
+
+  <employee>
+    <firstname>MacBookPro</firstname>
+    <lastname>TheAppleGuy</lastname>
+    <salary>340</salary>
+    <department>Development</department>
+  </employee>
+</employees>

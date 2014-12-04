@@ -1,0 +1,302 @@
+[
+  {
+    "firstName": "John",
+    "lastName": "Doe",
+    "salary": 150,
+    "department": "Marketing"
+  },
+  {
+    "firstName": "Anna",
+    "lastName": "Smith",
+    "salary": 250,
+    "department": "Marketing"
+  },
+  {
+    "firstName": "Peter",
+    "lastName": "Jones",
+    "salary": 478,
+    "department": "Marketing"
+  },
+  {
+    "firstName": "Victor",
+    "lastName": "Vasilica",
+    "salary": 137,
+    "department": "Development"
+  },
+  {
+    "firstName": "Grigore",
+    "lastName": "Postaru",
+    "salary": 520,
+    "department": "Development"
+  },
+  {
+    "firstName": "Veronica",
+    "lastName": "Forenco",
+    "salary": 315,
+    "department": "Sales"
+  },
+  {
+    "firstName": "Madalina",
+    "lastName": "Bujor",
+    "salary": 250,
+    "department": "Sales"
+  },
+  {
+    "firstName": "Aleona",
+    "lastName": "Guleaeva",
+    "salary": 315,
+    "department": "Sales"
+  },
+  {
+    "firstName": "Vova",
+    "lastName": "Bulgari",
+    "salary": 250,
+    "department": "Testing"
+  },
+  {
+    "firstName": "Alex",
+    "lastName": "Carturari",
+    "salary": 478,
+    "department": "Testing"
+  },
+  {
+    "firstName": "Ana",
+    "lastName": "Ciuprin",
+    "salary": 250,
+    "department": "Marketing"
+  },
+  {
+    "firstName": "Oleg",
+    "lastName": "Spalatori",
+    "salary": 400,
+    "department": "Marketing"
+  },
+  {
+    "firstName": "Mircea",
+    "lastName": "Pastru",
+    "salary": 234,
+    "department": "Marketing"
+  },
+  {
+    "firstName": "Dragan",
+    "lastName": "Vlames",
+    "salary": 250,
+    "department": "Development"
+  },
+  {
+    "firstName": "Viorel",
+    "lastName": "Storus",
+    "salary": 450,
+    "department": "Development"
+  },
+  {
+    "firstName": "Petru",
+    "lastName": "Veverita",
+    "salary": 234,
+    "department": "Sales"
+  },
+  {
+    "firstName": "Roman",
+    "lastName": "Soare",
+    "salary": 234,
+    "department": "Sales"
+  },
+  {
+    "firstName": "Vasile",
+    "lastName": "Dumbra",
+    "salary": 300,
+    "department": "Sales"
+  },
+  {
+    "firstName": "Ion",
+    "lastName": "Cotoresc",
+    "salary": 450,
+    "department": "Testing"
+  },
+  {
+    "firstName": "Fernando",
+    "lastName": "Verde",
+    "salary": 300,
+    "department": "Testing"
+  },
+  {
+    "firstname": "Ion",
+    "lastname": "Moraru",
+    "salary": 245,
+    "department": "Design"
+  },
+  {
+    "firstname": "Anatol",
+    "lastname": "LapteAcru",
+    "salary": 265,
+    "department": "Marketing"
+  },
+  {
+    "firstname": "Zinaida",
+    "lastname": "Fusu",
+    "salary": 333,
+    "department": "Marketing"
+  },
+  {
+    "firstname": "Margareta",
+    "lastname": "Craciu",
+    "salary": 490,
+    "department": "Sales"
+  },
+  {
+    "firstname": "Dorin",
+    "lastname": "Rotari",
+    "salary": 600,
+    "department": "Design"
+  },
+  {
+    "firstname": "Catalina",
+    "lastname": "Boronghi",
+    "salary": 750,
+    "department": "Design"
+  },
+  {
+    "firstname": "Cosmin",
+    "lastname": "Ispotel",
+    "salary": 600,
+    "department": "Marketing"
+  },
+  {
+    "firstname": "Ghenadie",
+    "lastname": "Staver",
+    "salary": 340,
+    "department": "Testing"
+  },
+  {
+    "firstname": "Viorel",
+    "lastname": "Eni",
+    "salary": 800,
+    "department": "Development"
+  },
+  {
+    "firstname": "Alexandru",
+    "lastname": "Dimtor",
+    "salary": 340,
+    "department": "Development"
+  },
+  {
+    "firstName": "Viorel",
+    "lastName": "Barbari",
+    "salary": 320,
+    "department": "Marketing"
+  },
+  {
+    "firstName": "Alina",
+    "lastName": "Buturuga",
+    "salary": 560,
+    "department": "Marketing"
+  },
+  {
+    "firstName": "Victor",
+    "lastName": "Paun",
+    "salary": 250,
+    "department": "Marketing"
+  },
+  {
+    "firstName": "Vlad",
+    "lastName": "Lapteacru",
+    "salary": 320,
+    "department": "Development"
+  },
+  {
+    "firstName": "Marcela",
+    "lastName": "Croitori",
+    "salary": 250,
+    "department": "Development"
+  },
+  {
+    "firstName": "Costea",
+    "lastName": "Valvul",
+    "salary": 250,
+    "department": "Sales"
+  },
+  {
+    "firstName": "James",
+    "lastName": "Mindru",
+    "salary": 320,
+    "department": "Sales"
+  },
+  {
+    "firstName": "Rodrigo",
+    "lastName": "Toader",
+    "salary": 560,
+    "department": "Sales"
+  },
+  {
+    "firstName": "Olea",
+    "lastName": "Eni",
+    "salary": 250,
+    "department": "Testing"
+  },
+  {
+    "firstName": "Rodica",
+    "lastName": "Laporeni",
+    "salary": 320,
+    "department": "Testing"
+  },
+  {
+    "firstname": "Virrion",
+    "lastname": "Roronoa",
+    "salary": 523,
+    "department": "Design"
+  },
+  {
+    "firstname": "Sanji",
+    "lastname": "BlackLeg",
+    "salary": 458,
+    "department": "Marketing"
+  },
+  {
+    "firstname": "Nami",
+    "lastname": "Chuan",
+    "salary": 633,
+    "department": "Marketing"
+  },
+  {
+    "firstname": "Zoro",
+    "lastname": "Marimo",
+    "salary": 255,
+    "department": "Sales"
+  },
+  {
+    "firstname": "Chopper",
+    "lastname": "Reendeer",
+    "salary": 500,
+    "department": "Design"
+  },
+  {
+    "firstname": "Narud",
+    "lastname": "Bigboy",
+    "salary": 250,
+    "department": "Design"
+  },
+  {
+    "firstname": "Keltuzad",
+    "lastname": "Ice",
+    "salary": 600,
+    "department": "Marketing"
+  },
+  {
+    "firstname": "HellScream",
+    "lastname": "Orkish",
+    "salary": 1500,
+    "department": "Testing"
+  },
+  {
+    "firstname": "Vaio",
+    "lastname": "TheNoteBook",
+    "salary": 500,
+    "department": "Development"
+  },
+  {
+    "firstname": "MacBookPro",
+    "lastname": "TheAppleGuy",
+    "salary": 340,
+    "department": "Development"
+  }
+]

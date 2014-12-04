@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<employees>
+  <employee>
+    <firstname>Ion</firstname>
+    <lastname>Moraru</lastname>
+    <salary>245</salary>
+    <department>Design</department>
+  </employee>
+
+  <employee>
+    <firstname>Anatol</firstname>
+    <lastname>LapteAcru</lastname>
+    <salary>265</salary>
+    <department>Marketing</department>
+  </employee>
+
+  <employee>
+    <firstname>Zinaida</firstname>
+    <lastname>Fusu</lastname>
+    <salary>333</salary>
+    <department>Marketing</department>
+  </employee>
+
+  <employee>
+    <firstname>Margareta</firstname>
+    <lastname>Craciu</lastname>
+    <salary>490</salary>
+    <department>Sales</department>
+  </employee>
+
+  <employee>
+    <firstname>Dorin</firstname>
+    <lastname>Rotari</lastname>
+    <salary>600</salary>
+    <department>Design</department>
+  </employee>
+
+  <employee>
+    <firstname>Catalina</firstname>
+    <lastname>Boronghi</lastname>
+    <salary>750</salary>
+    <department>Design</department>
+  </employee>
+
+  <employee>
+    <firstname>Cosmin</firstname>
+    <lastname>Ispotel</lastname>
+    <salary>600</salary>
+    <department>Marketing</department>
+  </employee>
+
+  <employee>
+    <firstname>Ghenadie</firstname>
+    <lastname>Staver</lastname>
+    <salary>340</salary>
+    <department>Testing</department>
+  </employee>
+
+  <employee>
+    <firstname>Viorel</firstname>
+    <lastname>Eni</lastname>
+    <salary>800</salary>
+    <department>Development</department>
+  </employee>
+
+  <employee>
+    <firstname>Alexandru</firstname>
+    <lastname>Dimtor</lastname>
+    <salary>340</salary>
+    <department>Development</department>
+  </employee>
+</employees>

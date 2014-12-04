@@ -1,0 +1,14 @@
+{
+  "employees":[
+      {"firstName":"Ana",      "lastName":"Ciuprin",   "salary":250, "department": "Marketing"},
+      {"firstName":"Oleg",     "lastName":"Spalatori", "salary":400, "department": "Marketing"},
+      {"firstName":"Mircea",   "lastName":"Pastru",    "salary":234, "department": "Marketing"},
+      {"firstName":"Dragan",   "lastName":"Vlames",    "salary":250, "department": "Development"},
+      {"firstName":"Viorel",   "lastName":"Storus",    "salary":450, "department": "Development"},
+      {"firstName":"Petru",    "lastName":"Veverita",  "salary":234, "department": "Sales"},
+      {"firstName":"Roman",    "lastName":"Soare",     "salary":234, "department": "Sales"},
+      {"firstName":"Vasile",   "lastName":"Dumbra",    "salary":300, "department": "Sales"},
+      {"firstName":"Ion",      "lastName":"Cotoresc",  "salary":450, "department": "Testing"},
+      {"firstName":"Fernando", "lastName":"Verde",     "salary":300, "department": "Testing"}
+  ]
+}
