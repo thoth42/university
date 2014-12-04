@@ -1,0 +1,15 @@
+\BOOKMARK [1][-]{section.1}{Introduction}{}
+\BOOKMARK [2][-]{subsection.1.1}{Topic}{section.1}
+\BOOKMARK [2][-]{subsection.1.2}{Objective}{section.1}
+\BOOKMARK [2][-]{subsection.1.3}{Generic requirements}{section.1}
+\BOOKMARK [3][-]{subsubsection.1.3.1}{Task}{subsection.1.3}
+\BOOKMARK [3][-]{subsubsection.1.3.2}{Report}{subsection.1.3}
+\BOOKMARK [1][-]{section.2}{Implementation}{}
+\BOOKMARK [2][-]{subsection.2.1}{Installation}{section.2}
+\BOOKMARK [2][-]{subsection.2.2}{Configuration}{section.2}
+\BOOKMARK [2][-]{subsection.2.3}{Initialize an empty repository}{section.2}
+\BOOKMARK [2][-]{subsection.2.4}{Link local and remote repositories}{section.2}
+\BOOKMARK [2][-]{subsection.2.5}{Remote repository}{section.2}
+\BOOKMARK [2][-]{subsection.2.6}{Working with branches}{section.2}
+\BOOKMARK [1][-]{section.3}{Conclussion}{}
+\BOOKMARK [1][-]{section.4}{References}{}
