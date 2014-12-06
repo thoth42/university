@@ -1,0 +1,134 @@
+#!/usr/bin/env python
+
+import sys, string, os, time
+
+def check(result, expect, mark):
+  print "Expecting:"
+  print expect
+  print "Result:"
+  print result
+  assert result == expect
+  print "\n=========================="
+  print "YAY, you have earned a %r" % str(mark)
+  print "==========================\n"
+
+def call(cmd):
+  print "Calling %r" % cmd
+  return string.strip(os.popen(cmd).read())
+
+print '''Welcome to IPP Lab 2.
+You'll need to write a program called 'fafurl'. It should generate a properly formatted CURL string.
+
+Look at the tests, look at the arguments.
+Before you ask, the general rule is as follows:
+
+curl [verbose] [headers] [method] [data] [url]
+
+This is the order.
+- 'verbose' should be on the same line and not indent.
+- 'headers' should be split by the ';' sign and be on separate line.
+            The headers should be properly formatted with a space following the colon.
+- 'method'  --method=post should be on a separate line as '-X POST'.
+- 'data'    should be formatted as a pretty-printed JSON and the quotes should be escaped.
+            note that "now" is a special variable that should display the current time as "HH:MM".
+- 'url'     the url should be at the end of everything, on a new line if something precedes it.
+            You will always be supplied a URL
+
+Hints:
+
+- start with the simplest examples and move up
+- investigate what your language/framework provides to parse the command line options
+- use the Builder pattern. It's MUCH easier that way
+- find a JSON serializer that can pretty print (if you'd like a 10)
+
+=======================================================
+   _____                 _   _                _    _
+  / ____|               | | | |              | |  | |
+ | |  __  ___   ___   __| | | |    _   _  ___| | _| |
+ | | |_ |/ _ \ / _ \ / _` | | |   | | | |/ __| |/ / |
+ | |__| | (_) | (_) | (_| | | |___| |_| | (__|   <|_|
+  \_____|\___/ \___/ \__,_| |______\__,_|\___|_|\_(_)
+
+=======================================================
+'''
+result = call("./fafurl http://faf.utm.md")
+expect = "curl http://faf.utm.md"
+check(result, expect, 5)
+
+result = call('./fafurl --headers="Content-Type: application/json" http://faf.utm.md')
+expect = '''curl -H \"Content-Type: application/json\" \\
+     http://faf.utm.md'''
+check(result, expect, 6)
+
+result = call('./fafurl --headers="Content-Type: application/json;Accept: application/json" http://faf.utm.md')
+expect = '''curl -H \"Content-Type: application/json\" \\
+     -H \"Accept: application/json\" \\
+     http://faf.utm.md'''
+check(result, expect, 7)
+
+result = call('./fafurl  --headers="Content-Type: application/json;Accept: application/json" --verbose http://cim.utm.md')
+expect = '''curl -v -H \"Content-Type: application/json\" \\
+     -H \"Accept: application/json\" \\
+     http://cim.utm.md'''
+check(result, expect, 7.5)
+
+result = call('./fafurl  --verbose --headers="Content-Type: application/json;Accept: application/json" http://faf.utm.md')
+expect = '''curl -v -H \"Content-Type: application/json\" \\
+     -H \"Accept: application/json\" \\
+     http://faf.utm.md'''
+check(result, expect, 8)
+
+result = call('./fafurl  --verbose --post --headers="Content-Type: application/json;Accept: application/xml" http://faf.utm.md')
+expect = '''curl -v -H \"Content-Type: application/json\" \\
+     -H \"Accept: application/xml\" \\
+     -X POST \\
+     http://faf.utm.md'''
+check(result, expect, 8.4)
+
+result = call('./fafurl  --verbose --headers="Content-Type:application/json; Accept:application/xml" --post https://faf.utm.md')
+expect = '''curl -v -H \"Content-Type: application/json\" \\
+     -H \"Accept: application/xml\" \\
+     -X POST \\
+     https://faf.utm.md'''
+check(result, expect, 9)
+
+result = call('./fafurl --hello=world --faf=awesome --headers="Content-Type:application/json; Accept:application/xml" --post https://faf.utm.md')
+current_time = time.strftime("%H:%M")
+expect = '''curl -H "Content-Type: application/json" \\
+     -H "Accept: application/xml" \\
+     -X POST \\
+     -d "{ \\
+           \\"data\\": { \\
+             \\"hello\\": \\"world\\", \\
+             \\"faf\\": \\"awesome\\" \\
+           } \\
+         }" \\
+     https://faf.utm.md'''
+check(result, expect, 9.4)
+
+result = call('./fafurl --you=awesome --hey=world --time=now --headers="Content-Type:application/json; Accept:application/xml" --post https://faf.utm.md')
+current_time = time.strftime("%H:%M")
+expect = '''curl -H "Content-Type: application/json" \\
+     -H "Accept: application/xml" \\
+     -X POST \\
+     -d "{ \\
+           \\"data\\": { \\
+             \\"you\\": \\"awesome\\", \\
+             \\"hey\\": \\"world\\", \\
+             \\"time\\": \\"'''+current_time+'''\\" \\
+           } \\
+         }" \\
+     https://faf.utm.md'''
+check(result, expect, 10)
+
+print '''
+===========================================================
+   _____ ____  _   _  _____ _____         _______ _____ _
+  / ____/ __ \| \ | |/ ____|  __ \     /\|__   __/ ____| |
+ | |   | |  | |  \| | |  __| |__) |   /  \  | | | (___ | |
+ | |   | |  | | . ` | | |_ |  _  /   / /\ \ | |  \___ \| |
+ | |___| |__| | |\  | |__| | | \ \  / ____ \| |  ____) |_|
+  \_____\____/|_| \_|\_____|_|  \_\/_/    \_\_| |_____/(_)
+
+===========================================================
+'''

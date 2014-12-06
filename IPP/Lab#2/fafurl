@@ -1,0 +1,91 @@
+#!/usr/bin/env ruby
+require 'optparse'
+require 'singleton'
+require 'json'
+require 'time'
+
+module Fafuri
+  # Defines the available parameters for the class
+  IPPStruct = Struct.new(:command, :headers, :list, :post, :argv, :verbose, :data)
+
+  class IPP
+    include Singleton
+
+    # Initialize the IPP and set defaults:
+    @@options = IPPStruct.new
+
+    @@options.command = "curl"
+    @@options.headers = ""
+    @@options.list = nil
+    @@options.verbose = false
+    @@options.post = false
+    @@options.argv = nil
+    @@options.data = {"data" => {} }
+
+    # Pass any other calls (getters/setters of to the IPP
+    # on to options as a way to easily set/get attribute values
+    def self.method_missing(method, *args, &block)
+      if @@options.respond_to?(method)
+        @@options.send(method, *args, &block)
+      else
+        super(method, *args)
+      end
+    end
+
+    def self.result
+      res = ""
+      res << options.command
+      res << " -v" if options.verbose
+      options_list << " -X POST" if options.post
+      options_list << " -d \"#{format_data}\"" unless options.data["data"].empty?
+      res << (options_list << " #{options.argv}").join(" \\\n    ")
+    end
+
+    def self.data key, value
+      options.data["data"][key] = value
+    end
+
+    def self.options_list
+      options.list ||= options.headers.split(/;\s?/).map { |h| " -H \"#{format_header(h)}\""  }
+    end
+
+    def self.format_header hdr
+      hdr.gsub(/:\s?/, ": ")
+    end
+
+    def self.format_data
+      JSON.pretty_generate(options.data).gsub(/"/, '\"').split("\n").join(" \\\n         ")
+    end
+
+    def self.options
+      @@options
+    end
+
+    private_class_method :options, :format_data, :format_header, :options_list
+end
+
+class OptParser
+  def self.parse(args)
+    IPP.argv = args.last
+
+    opts = OptionParser.new do |parser|
+      parser.separator ""
+      parser.separator "Specific options:"
+
+      parser.on("-h", "--headers HEADERS", "Headers") { |headers| IPP.headers =  headers }
+      parser.on("-v", "--verbose", "Run verbosely") { |verbose| IPP.verbose = verbose }
+      parser.on("-p", "--post", "With post") { |post| IPP.post = post }
+      parser.on("-f", "--faf STRING", "Faf param") { |faf| IPP.data "faf", faf }
+      parser.on("-hl", "--hello STRING", "Hello param") { |hello| IPP.data "hello", hello }
+      parser.on("-y", "--you STRING", "you") { |you| IPP.data "you", you }
+      parser.on("-he", "--hey STRING", "hey") { |hey| IPP.data "hey", hey }
+      parser.on("-t", "--time STRING", "time") { |time| IPP.data "time", Time.now.strftime("%H:%M") }
+    end
+
+    opts.parse!(args)
+  end
+end
+end
+
+Fafuri::OptParser.parse(ARGV)
+puts Fafuri::IPP.result
