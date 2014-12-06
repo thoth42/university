@@ -1,0 +1,9 @@
+#!/usr/bin/env ruby
+
+ARGV.map(&:to_i).each do |num|
+  if num == 1
+    puts "1 bottle of beer on the wall\nIf that one bottle should happen to fall, what a waste of alcohol!"
+  else
+    puts "#{num} bottles of beer on the wall\nTake one down, pass it around, #{num - 1} bottles of beer on the wall" 
+  end
+end

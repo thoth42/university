@@ -1,0 +1,14 @@
+#!/usr/bin/env ruby
+
+def verse verse_number
+  if verse_number == 1
+    "1 bottle of beer on the wall\nIf that one bottle should happen to fall, what a waste of alcohol!"
+  elsif verse_number == 0
+    "No more bottles of beer on the wall, no more bottles of beer\nGo to the store and buy some more, 99 bottles of beer on the wall..."
+  else  
+    "#{verse_number} bottles of beer on the wall\nTake one down, pass it around, #{verse_number - 1} bottles of beer on the wall"
+  end
+end
+
+argv = ARGV.map(&:to_i)
+puts argv.first.downto(argv.last).inject([]) { |res, verse_num| res << verse(verse_num) }.join "\n" 
