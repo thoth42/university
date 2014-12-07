@@ -1,0 +1,326 @@
+%----------------------------------------------------------------------------------------
+% PACKAGES AND DOCUMENT CONFIGURATIONS
+%----------------------------------------------------------------------------------------
+
+  \documentclass{article}
+
+  \usepackage{hyperref}
+  \usepackage{fancyhdr} % Required for custom headers
+  \usepackage{lastpage} % Required to determine the last page for the footer
+  \usepackage{extramarks} % Required for headers and footers
+  \usepackage[usenames,dvipsnames]{color} % Required for custom colors
+  \usepackage{graphicx} % Required to insert images
+  \usepackage{listings} % Required for insertion of code
+  \usepackage{courier} % Required for the courier font
+  \usepackage{lipsum} % Used for inserting dummy 'Lorem ipsum' text into the template
+  \usepackage{wrapfig}
+  \usepackage{color}
+  \usepackage{lscape}
+
+  \setlength\parindent{0pt} % Removes all indentation from paragraphs
+  \renewcommand{\labelenumi}{\alph{enumi}.} % Make numbering in the itemize environment by letter rather than number (e.g. section 6)
+
+  % Margins
+  \topmargin=-0.7in
+  \evensidemargin=0.2in
+  \oddsidemargin=-0.2in
+  \textwidth=7.0in
+  \textheight=9.3in
+  % \headsep=0.25in
+
+  % \linespread{1.1} % Line spacing
+
+  \definecolor{dkgreen}{rgb}{0,0.6,0}
+  \definecolor{gray}{rgb}{0.5,0.5,0.5}
+  \definecolor{mauve}{rgb}{0.58,0,0.82}
+  \definecolor{greyish}{rgb}{0.96,0.96,0.96}
+
+  \lstset{
+    backgroundcolor=\color{greyish},   % choose the background color; you must add \usepackage{color} or \usepackage{xcolor}
+    frame=tb,
+    numbers=left,                    % where to put the line-numbers; possible values are (none, left, right)
+    numbersep=5pt,                   % how far the line-numbers are from the code
+    numberstyle=\tiny\color{mygray}, % the style that is used for the line-numbers
+    language=Ruby,
+    aboveskip=3mm,
+    belowskip=3mm,
+    showstringspaces=false,
+    columns=flexible,
+    basicstyle={\footnotesize\ttfamily},
+    numbers=none,
+    numberstyle=\tiny\color{gray},
+    keywordstyle=\color{blue},
+    commentstyle=\color{dkgreen},
+    stringstyle=\color{mauve},
+    breaklines=true,
+    breakatwhitespace=true
+    tabsize=3
+  }
+%----------------------------------------------------------------------------------------
+% DOCUMENT INFORMATION
+%----------------------------------------------------------------------------------------
+  \begin{document}
+  \begin{titlepage}
+
+%----------------------------------------------------------------------------------------
+% TITLE PAGE INFORMATION
+%----------------------------------------------------------------------------------------
+ \newcommand{\HRule}{\rule{\linewidth}{0.5mm}} % Defines a new command for the horizontal lines, change thickness here
+  \begin{center} % Center everything on the page
+
+  %----------------------------------------------------------------------------------------
+  % HEADING SECTIONS
+  %----------------------------------------------------------------------------------------
+  \textsc{\Large Faculty of Computers, Informatics and Microelectronics}\\[0.5cm]
+  \textsc{\LARGE Technical University of Moldova}\\[1.2cm] % Name of your university/college
+  \vspace{25 mm}
+  \textsc{\Large PSI}\\[0.5cm] % Major heading such as course name
+  %\textsc{\large Laboratory work \#1-3}\\[0.5cm] % Minor heading such as course title
+  \textsc{\large Laboratory work \# 2}\\[0.5cm] % Minor heading such as course title
+
+  %----------------------------------------------------------------------------------------
+  % TITLE SECTION
+  %----------------------------------------------------------------------------------------
+  \vspace{10 mm}
+  \HRule \\[0.4cm]
+  { \LARGE \bfseries Registration number verification }\\[0.4cm] % Title of your document
+  \HRule \\[1.5cm]
+
+  %----------------------------------------------------------------------------------------
+  % AUTHOR SECTION
+  %----------------------------------------------------------------------------------------
+  \vspace{40mm}
+
+  \begin{minipage}{0.4\textwidth}
+  \begin{flushleft} \large
+  \emph{Author:}\\
+  Petru \textsc{Negrei} % Your name
+  \end{flushleft}
+  \end{minipage}
+  ~
+  \begin{minipage}{0.4\textwidth}
+  \begin{flushright} \large
+  \emph{Supervisor:} \\
+  A. \textsc{Railean} % Supervisor's Name
+  \end{flushright}
+  \end{minipage}\\[4cm]
+
+  \vspace{15 mm}
+  % If you don't want a supervisor, uncomment the two lines below and remove the section above
+  %\Large \emph{Author:}\\
+  %John \textsc{Smith}\\[3cm] % Your name
+
+  %----------------------------------------------------------------------------------------
+  % DATE SECTION
+  %----------------------------------------------------------------------------------------
+
+  {\large November 2014}\\[3cm] % Date, change the \today to a set date if you want to be precise
+
+  %----------------------------------------------------------------------------------------
+  % LOGO SECTION
+  %----------------------------------------------------------------------------------------
+
+  %\includegraphics{Logo}\\[1cm] % Include a department/university logo - this will require the graphicx package
+
+  %----------------------------------------------------------------------------------------
+
+  \vfill % Fill the rest of the page with whitespace
+  \end{center}
+  \end{titlepage}
+
+  % \newpage
+  % \tableofcontents
+  % \newpage
+
+%----------------------------------------------------------------------------------------
+% Introduction
+%----------------------------------------------------------------------------------------
+
+  \section{Introduction}
+
+  \subsection{Objective}
+
+  \begin{itemize}
+    \item Design and develop a registration number verification mechanism
+    \item That relies on public key cryptography
+  \end{itemize}
+
+  \subsection{Overview}
+
+  Registration numbers - nobody likes them, especially when they are split into several chunks that have to 
+  go to different edit widgets (so you must perform more than one copy/paste operation from the keygen.
+  Nevertheless, they are the most common method of verifying the authenticity of the installed application, 
+  and most commercial software applies such checks.
+
+%%--------------------------------------------------------------------------
+%% Implementation
+%%--------------------------------------------------------------------------
+
+  \section{Implementation}
+
+  \begin{itemize}
+      \item Frequency analysis
+      \item Each substitution number
+  \end{itemize}
+
+  \subsection{Cypher module}
+
+  Below there are external ruby libraries used in this program.
+
+  \begin{itemize}
+    \item \textit{openssl} - OpenSSL provides general purpose cryptography which includes RSA.
+    \item \textit{base64} - The Base64 module provides for the encoding and decoding of binary data using a Base64 representation.
+    \item \textit{securerandom} - Generate a random number-string 
+  \end{itemize}
+
+  \begin{itemize}
+    \item \textit{SECRET} - some predefined secret string.
+    \item \textit{PUBLIC\_KEY\_LOC} - public key generate by RSA.
+    \item \textit{KEY\_LOC} - encrypted string with the private key.
+  \end{itemize}
+
+  \begin{lstlisting}
+    require 'openssl'
+    require 'base64'
+    require 'securerandom'
+
+    SECRET = "s3cr3t"
+    PUBLIC_KEY_LOC = "public_key.pub"
+    KEY_LOC = "key.txt"
+  \end{lstlisting}
+
+  Generator steps:
+
+  \begin{itemize}
+    \item First we generate a random string with a secret string.
+    \item Then we encrypt that key using the way of public key cryptography.
+    \item Then encode the key in base64.
+    \item Save the encoded key in a file, later to be read.
+  \end{itemize}
+
+  \begin{lstlisting}
+  class Generator
+
+    def initialize
+      @rsa = OpenSSL::PKey::RSA.new 2048
+      save_public_key
+      save_serial
+    end
+
+    private
+
+    #'O4KLIVc-5u8C11E-s3cr3t-S9NSu1A-s4qWzcI-lUI9k_0-RV9ETlY
+    # "P0X2lPU3OQAsQMIRUaocU3bMn8VAv6cK7xcs3cr3t7rPd4_Y"
+    def generate_key
+      tmp = (0..5).map { || generate_numbers } << SECRET 
+      tmp.shuffle.join #"-"
+    end
+
+    def generate_numbers
+      SecureRandom.urlsafe_base64(5)
+    end
+
+    def save_public_key
+      File.open(PUBLIC_KEY_LOC, 'w+') { |file| file.write @rsa.public_key.to_pem}
+    end
+
+      #encrypt with the private RSA key
+      def  encrypted_key
+        @rsa.private_encrypt generate_key
+      end
+
+      def encoded_key
+        Base64.encode64 encrypted_key
+      end
+
+      def save_serial
+        File.open(KEY_LOC, 'w+') { |file| file.write encoded_key }
+      end
+  end
+  \end{lstlisting}
+
+   \begin{lstlisting}
+    module Verifier
+
+      class Checker
+
+        def initialize key
+          @key = key
+          @rsa = OpenSSL::PKey::RSA.new File.read(PUBLIC_KEY_LOC)
+        end
+
+        def result
+          !(decrypted_key =~ /"#{SECRET}"/)
+        end
+
+        private
+
+        def decoded_key
+          Base64.decode64 @key
+        end
+
+        def decrypted_key 
+          @rsa.public_decrypt decoded_key
+        end
+
+      end
+
+        def self.verify key
+          Checker.new(key).result
+        end
+    end
+
+    \end{lstlisting}
+
+    Verifier steps:
+
+    \begin{itemize}
+      \item Reverse the base64 encoding.
+      \item Decrypt the key using public key.
+      \item Check the number and return a boolean value.
+    \end{itemize}
+
+    \begin{lstlisting}
+    Generator.new
+    key = File.open(KEY_LOC, "rb").read
+    p Verifier.verify key 
+    \end{lstlisting}
+
+    \begin{lstlisting}
+    # public_key.pub
+    -----BEGIN PUBLIC KEY-----
+    MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAxdoL7Xt2IrekMgQ8m2IF
+    IM/DnfsNvURqRL/Meds+acd5Uw9qyTZJ0AdDwNPJRP7+iRxeX9O/QQ376II/F342
+    /gJVZGNUaVfTAEvkfAI8uX6RT1UyQOF6FCH5DwO1h6iQqPKlspQtqDqoZedKzSS5
+    kJJ+yAh17xgM53YysgQAXoNO90/HsMQ1+jr7oIKnD84yBhYxfCGMTXNDYGMM3nXa
+    vyx5nmrlHk+W0TzSBawpFB1SMkOcHNoZvTJQ+TWcHj+pyzO9noFgrUq/KVuVDS9d
+    K6uekbs9t7gIRBaRcBL5wWnf/c5L2jlye9l3OZKs0mbVYRqnyt0dr2zi+JuJgkB5
+    YwIDAQAB
+    -----END PUBLIC KEY-----
+    \end{lstlisting}
+
+    \begin{lstlisting}
+    # key.txt
+    xM7zDVYX2s/O7PTIMnJXbw62WAxLG7IAf60rB5dsNdJnwWyjk0UayIiOjZVJ
+    Ruc7hjO7g1koC+nDYFD72ArmFjOa1l1/AUQ9acLSl3/SJa7Wa5MhHRqi7ySZ
+    PcYbgNtgv/A7g/m5pPgtwFmXZy4io2IfbGbFZYssxhUZevuXRDO0JV3GaJPU
+    FvTI5u3JtFg6mrSZF1lZZdBhMnOKdpJFqBtkeGveXJaW7GCxHuVPYrOwqCb+
+    zq+aISwkuzA3p+K7XsoKGFMjPaZh1Pjwm4BkddNi1Jw4vvRZxWl/ZaJnMxYe
+    s7awg4qWayft8OYgdNx16fSpX2FVrqcQ5/jcUcVK3g==
+    \end{lstlisting}
+
+    \begin{lstlisting}
+    # result 
+    true
+    \end{lstlisting}
+
+ \section{Conclussion}
+
+    After making this laboratory work I learn more about public key cryptography and how
+    it can be used in the case of hiding information about registration numbers or 
+    serial number. Also implemented a checker for verification of validity of the serial number, 
+    the method used here is far from reality of generating and verificiation of serial numbers 
+    but it serve the purpose to show the mechanism of publick key cryptography. 
+
+\end{document}
+
