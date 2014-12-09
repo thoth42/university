@@ -1,0 +1,279 @@
+%----------------------------------------------------------------------------------------
+% PACKAGES AND DOCUMENT CONFIGURATIONS
+%----------------------------------------------------------------------------------------
+
+  \documentclass{article}
+
+  \usepackage{hyperref}
+  \usepackage{fancyhdr} % Required for custom headers
+  \usepackage{lastpage} % Required to determine the last page for the footer
+  \usepackage{extramarks} % Required for headers and footers
+  \usepackage[usenames,dvipsnames]{color} % Required for custom colors
+  \usepackage{graphicx} % Required to insert images
+  \usepackage{listings} % Required for insertion of code
+  \usepackage{courier} % Required for the courier font
+  \usepackage{lipsum} % Used for inserting dummy 'Lorem ipsum' text into the template
+  \usepackage{wrapfig}
+  \usepackage{color}
+  \usepackage{lscape}
+
+  \setlength\parindent{0pt} % Removes all indentation from paragraphs
+  \renewcommand{\labelenumi}{\alph{enumi}.} % Make numbering in the itemize environment by letter rather than number (e.g. section 6)
+
+  % Margins
+  \topmargin=-0.7in
+  \evensidemargin=0.2in
+  \oddsidemargin=-0.2in
+  \textwidth=7.0in
+  \textheight=9.3in
+  % \headsep=0.25in
+
+  % \linespread{1.1} % Line spacing
+
+  \definecolor{dkgreen}{rgb}{0,0.6,0}
+  \definecolor{gray}{rgb}{0.5,0.5,0.5}
+  \definecolor{mauve}{rgb}{0.58,0,0.82}
+  \definecolor{greyish}{rgb}{0.96,0.96,0.96}
+
+  \lstset{
+    backgroundcolor=\color{greyish},   % choose the background color; you must add \usepackage{color} or \usepackage{xcolor}
+    frame=tb,
+    numbers=left,                    % where to put the line-numbers; possible values are (none, left, right)
+    numbersep=5pt,                   % how far the line-numbers are from the code
+    numberstyle=\tiny\color{mygray}, % the style that is used for the line-numbers
+    language=Ruby,
+    aboveskip=3mm,
+    belowskip=3mm,
+    showstringspaces=false,
+    columns=flexible,
+    basicstyle={\footnotesize\ttfamily},
+    numbers=none,
+    numberstyle=\tiny\color{gray},
+    keywordstyle=\color{blue},
+    commentstyle=\color{dkgreen},
+    stringstyle=\color{mauve},
+    breaklines=true,
+    breakatwhitespace=true
+    tabsize=3
+  }
+%----------------------------------------------------------------------------------------
+% DOCUMENT INFORMATION
+%----------------------------------------------------------------------------------------
+  \begin{document}
+  \begin{titlepage}
+
+%----------------------------------------------------------------------------------------
+% TITLE PAGE INFORMATION
+%----------------------------------------------------------------------------------------
+ \newcommand{\HRule}{\rule{\linewidth}{0.5mm}} % Defines a new command for the horizontal lines, change thickness here
+  \begin{center} % Center everything on the page
+
+  %----------------------------------------------------------------------------------------
+  % HEADING SECTIONS
+  %----------------------------------------------------------------------------------------
+  \textsc{\Large Faculty of Computers, Informatics and Microelectronics}\\[0.5cm]
+  \textsc{\LARGE Technical University of Moldova}\\[1.2cm] % Name of your university/college
+  \vspace{25 mm}
+  \textsc{\Large SI}\\[0.5cm] % Major heading such as course name
+  %\textsc{\large Laboratory work \#1-3}\\[0.5cm] % Minor heading such as course title
+  \textsc{\large Laboratory work \# 2}\\[0.5cm] % Minor heading such as course title
+
+  %----------------------------------------------------------------------------------------
+  % TITLE SECTION
+  %----------------------------------------------------------------------------------------
+  \vspace{10 mm}
+  \HRule \\[0.4cm]
+  { \LARGE \bfseries Encryption: Rot13 }\\[0.4cm] % Title of your document
+  \HRule \\[1.5cm]
+
+  %----------------------------------------------------------------------------------------
+  % AUTHOR SECTION
+  %----------------------------------------------------------------------------------------
+  \vspace{40mm}
+
+  \begin{minipage}{0.4\textwidth}
+  \begin{flushleft} \large
+  \emph{Author:}\\
+  Petru \textsc{Negrei} % Your name
+  \end{flushleft}
+  \end{minipage}
+  ~
+  \begin{minipage}{0.4\textwidth}
+  \begin{flushright} \large
+  \emph{Supervisor:} \\
+  A. \textsc{Railean} % Supervisor's Name
+  \end{flushright}
+  \end{minipage}\\[4cm]
+
+  \vspace{15 mm}
+  % If you don't want a supervisor, uncomment the two lines below and remove the section above
+  %\Large \emph{Author:}\\
+  %John \textsc{Smith}\\[3cm] % Your name
+
+  %----------------------------------------------------------------------------------------
+  % DATE SECTION
+  %----------------------------------------------------------------------------------------
+
+  {\large September 2014}\\[3cm] % Date, change the \today to a set date if you want to be precise
+
+  %----------------------------------------------------------------------------------------
+  % LOGO SECTION
+  %----------------------------------------------------------------------------------------
+
+  %\includegraphics{Logo}\\[1cm] % Include a department/university logo - this will require the graphicx package
+
+  %----------------------------------------------------------------------------------------
+
+  \vfill % Fill the rest of the page with whitespace
+  \end{center}
+  \end{titlepage}
+
+  % \newpage
+  % \tableofcontents
+  % \newpage
+
+%----------------------------------------------------------------------------------------
+% Introduction
+%----------------------------------------------------------------------------------------
+
+  \section{Introduction}
+
+  \subsection{Objective}
+
+  Understand the rot13 cipher and build a tool that break it.
+
+  \subsection{Definition}
+
+  ROT13 ("rotate by 13 places", sometimes hyphenated ROT-13) is a simple letter substitution
+  cipher that replaces a letter with the letter 13 letters after it in the alphabet.
+  ROT13 is an example of the Caesar cipher, developed in ancient Rome. \\
+
+ In the basic Latin alphabet, ROT13 is its own inverse; that is, to undo ROT13, the same algorithm is applied, so the same action can be used for encoding and decoding.
+ The algorithm provides virtually no cryptographic security, and is often cited as a canonical example of weak encryption.
+
+%%--------------------------------------------------------------------------
+%% Implementation
+%%--------------------------------------------------------------------------
+
+  \section{Implementation}
+
+  The following program implements two way of breaking the
+  rot13  substitution cipher:
+
+  \begin{itemize}
+      \item Frequency analysis
+      \item Each substitution number
+  \end{itemize}
+
+  \subsection{Cypher module}
+
+  The text is received from a existing document.
+
+    \begin{lstlisting}
+      def cipher
+        str = ""
+        File.open("data.txt", "r") do |f|
+          f.each_line { |line| str << line }
+        end
+        rot(str, 13)
+      end
+    \end{lstlisting}
+
+    Then each letter is replaced by the given number.
+
+    \begin{lstlisting}
+      def rot string, num
+        origin = "a-zA-Z"
+        cipher = [('a'..'z'), ('A'..'Z')].map {|range| range.to_a.rotate(num).join }.join
+        string.tr origin, cipher
+      end
+    \end{lstlisting}
+
+    And the last step is to initiate a dictionary of words.
+
+    \begin{lstlisting}
+      def initiate_dictionary
+        # /usr/share/dict/words
+        File.open("./dictionary.txt") do |file|
+          file.each { |line| @words[line.strip] = true }
+        end
+      end
+    \end{lstlisting}
+
+    \newpage
+
+  \subsection{Frequency analysis}
+
+  First we begin by iterating through known most used
+  letters in english dictionary and check each for matching
+  number of words.
+
+   \begin{lstlisting}
+      def rot_num
+        chars = ["e", "t", "a", "o", "i", "n"]
+
+        char = chars.detect {|char| valid?(ord_num(char))}
+        ord_num char
+      end
+   \end{lstlisting}
+
+   \begin{lstlisting}
+      def valid? num
+        rot(cipher, num).split.select{ |word| @words[word.downcase] }.count  > 1
+      end
+
+      def ord_num char
+        most_used_char.ord - char.ord
+      end
+
+      def most_used_char
+        @msch ||= cipher.scan(/\w/)
+                                         .inject(Hash.new(0)) { |h, c| h[c] += 1; h }
+                                         .max_by { |_,v| v }.first
+      end
+   \end{lstlisting}
+
+   and at the end we output the original string.
+
+   \begin{lstlisting}
+      def original
+        rot cipher, rot_num
+      end
+   \end{lstlisting}
+
+  \subsection{Step analysis}
+
+  This implementation is easier to apply, we iterate through each
+  possible number of permutation of alphabet (26) and check which
+  has the most valid words, and then apply the algorithm.
+
+   \begin{lstlisting}
+    def check_rot
+        (0..26). map do |num|
+          cipher.split.select{ |word| @words[rot(word, num).downcase] }.count
+        end
+      end
+
+      def rot_num
+         26 - check_rot.each_with_index.max[1]
+       end
+
+      def show_original
+        rot cipher, rot_num
+      end
+   \end{lstlisting}
+
+ \section{Conclussion}
+
+    After making this laboratory work I learn about different methods to break the ROT13 (and caesar ciphers) substition cypher
+    and it is easy to observe that algorithm provide almost no cryptographic security. Some of the possible aproaches to
+    improve the security are:
+
+    \begin{itemize}
+        \item \textit{The Vignere cipher} -  to use different shifts at different positions in the message. (additional key)
+        \item \textit{One-time pads}  - where the previous additional key used is infinitely long or a completely random key.
+        \item \textit{Multi-character alphabets} - treate larger chunks of text as the characters of our message.
+    \end{itemize}
+
+\end{document}
+

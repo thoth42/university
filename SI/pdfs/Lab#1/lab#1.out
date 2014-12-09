@@ -1,0 +1,10 @@
+\BOOKMARK [1][-]{section.1}{Introduction}{}
+\BOOKMARK [2][-]{subsection.1.1}{Objective}{section.1}
+\BOOKMARK [2][-]{subsection.1.2}{Generic requirements}{section.1}
+\BOOKMARK [3][-]{subsubsection.1.2.1}{Directory integrity checker}{subsection.1.2}
+\BOOKMARK [3][-]{subsubsection.1.2.2}{Dedupe}{subsection.1.2}
+\BOOKMARK [1][-]{section.2}{Implementation}{}
+\BOOKMARK [2][-]{subsection.2.1}{Main program}{section.2}
+\BOOKMARK [2][-]{subsection.2.2}{Duplication example}{section.2}
+\BOOKMARK [2][-]{subsection.2.3}{Modified in system}{section.2}
+\BOOKMARK [1][-]{section.3}{Conclussion}{}
