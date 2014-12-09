@@ -1,0 +1,93 @@
+#!/usr/bin/env ruby
+require 'gli'
+begin # XXX: Remove this begin/rescue before distributing your app
+require 'lab1'
+require 'digest'
+require "sqlite3"
+require 'rufus-scheduler'
+
+rescue LoadError
+  STDERR.puts "In development, you need to use `bundle exec bin/lab1` to run your app"
+  STDERR.puts "At install-time, RubyGems will make sure lib, etc. are in the load path"
+  STDERR.puts "Feel free to remove this message from bin/lab1 now"
+  exit 64
+end
+
+PATH = "/home/peter/test"
+MEGABYTE  = 1024*1024
+MAXSIZE   = 50*MEGABYTE
+
+include GLI::App
+
+program_desc 'First laboratory work at the information security'
+
+version Lab1::VERSION
+
+subcommand_option_handling :normal
+arguments :strict
+
+# Global options
+desc 'skip files above a certain size given in bytes'
+default_value MAXSIZE
+flag [:max_size]
+
+desc 'skip paths that match a pattern'
+default_value ""
+flag [:exclude]
+
+desc 'this command line argument ensures that nothing is printed on the screen if no differences were found'
+default_value true
+switch [:silent]
+
+# dircheck command
+desc 'This program keeps an eye on the contents of a directory, notifying you when something inside it has changed.'
+arg_name 'path name'
+command :dircheck do |c|
+  c.action do |global_options,options,args|
+    path = args.first || PATH
+    @scheduler.every("10s") do
+      checker = DirCheck.new path: path , max_size: global_options[:max_size], exclude: global_options[:exclude], db: @db
+      puts checker.show_result
+    end
+
+    @scheduler.join
+  end
+end
+
+# dedupe command
+desc 'A duplicate finder, which analyzes a given directory and prints a list of identical files that have different names or paths.'
+arg_name 'path name'
+command :dedupe do |c|
+  c.action do |global_options,options,args|
+    path = args.first || PATH
+    checker = DupFile.new path: path , max_size: global_options[:max_size], exclude: global_options[:exclude]
+    puts checker.list_same_files
+  end
+end
+
+pre do |global,command,options,args|
+  # create a scheduler
+  @scheduler = Rufus::Scheduler.new
+  # Open a database
+  @db = SQLite3::Database.new "check.db"
+  begin
+      rows = @db.execute <<-SQL
+        create table hash_table (
+          path varchar(30),
+          hash varchar(30),
+          size int
+        );
+      SQL
+  rescue SQLite3::SQLException => e
+      "Table already exists"
+  end
+end
+
+post do |global,command,options,args|
+end
+
+on_error do |exception|
+  true
+end
+
+exit run(ARGV)

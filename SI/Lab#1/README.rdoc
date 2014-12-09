@@ -1,0 +1,6 @@
+= lab1
+
+Describe your project here
+
+:include:lab1.rdoc
+

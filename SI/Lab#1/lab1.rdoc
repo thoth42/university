@@ -1,0 +1,5 @@
+= lab1
+
+Generate this with
+    lab1 rdoc
+After you have described your command line interface
